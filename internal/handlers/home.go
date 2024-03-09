@@ -6,10 +6,12 @@ import (
 	"net/http"
 )
 
-func Home(w http.ResponseWriter, r *http.Request) {
+func (m *HandlerConfig) Home(w http.ResponseWriter, r *http.Request) {
 	data := make(map[string]string)
 	data["firstName"] = "Fouche"
 	data["lastName"] = "du Preez"
+
+	m.App.Session.Put(r.Context(), "SomeKey", "Hello from the session!")
 
 	render.Template(w, r, "/home.page.tmpl", &models.TemplateData{
 		StringMap: data,
