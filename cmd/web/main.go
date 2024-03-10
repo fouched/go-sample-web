@@ -27,7 +27,6 @@ var errorLog *log.Logger
 const dbString = "host=localhost port=5432 dbname=go_sample_web user=go password=gopher"
 
 func main() {
-
 	dbPool, err := run()
 	if err != nil {
 		log.Fatalln(err)
